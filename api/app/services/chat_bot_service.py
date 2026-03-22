@@ -7,9 +7,6 @@ from app.models.user_model import User
 from app.schemas.chat_bot_schema import ChatBotRequest
 from app.schemas.user_schema import UserChatBotDailyRequest
 
-client = AsyncOpenAI()
-
-
 class ChatBotService:
     """
     Service class for interacting with the ChatBot using OpenAI's
@@ -21,7 +18,7 @@ class ChatBotService:
         Sends a user input to the ChatBot model and retrieves the generated
         answer.
         """
-        print(data)
+        client = AsyncOpenAI()
         preprompt = ("You are a french assistant about vegetable gardens. "
                      "If the user asks a question unrelated to gardening, "
                      "letting them know that your expertise is in vegetable "
