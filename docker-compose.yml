@@ -1,8 +1,18 @@
 services:
+  garden-mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - garden-mongo-data:/data/db
+    networks:
+      - internal
+
   garden-api:
     build: ./api
     restart: unless-stopped
     env_file: .env
+    depends_on:
+      - garden-mongo
     networks:
       - traefik-public
       - internal
@@ -27,6 +37,9 @@ services:
       - "traefik.http.routers.garden-frontend.entrypoints=websecure"
       - "traefik.http.routers.garden-frontend.tls.certresolver=letsencrypt"
       - "traefik.http.services.garden-frontend.loadbalancer.server.port=80"
+
+volumes:
+  garden-mongo-data:
 
 networks:
   traefik-public:
