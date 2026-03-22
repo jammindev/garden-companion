@@ -1,0 +1,43 @@
+const FakeVegetableData = [
+  {
+    vegetable_manager_id: "erpmwemrv",
+    name: "Tomate",
+    variety: "Coeur de Boeuf",
+    quantity: 10,
+    quantity_unit: "plants",
+    sowing_date: new Date("2024-06-19"),
+    planting_date: new Date("2024-07-03"),
+    ready_to_harvest: false,
+    quantity_harvested: null,
+    harvest_unit: null,
+    remove_date: null,
+  },
+  {
+    vegetable_manager_id: "erpmweeemrv",
+    name: "Courgette",
+    variety: "Ronde",
+    quantity: 8,
+    quantity_unit: "plants",
+    sowing_date: new Date("2024-05-30"),
+    planting_date: new Date("2024-07-01"),
+    ready_to_harvest: true,
+    quantity_harvested: 2.5,
+    harvest_unit: "kg",
+    remove_date: null,
+  },
+  {
+    vegetable_manager_id: "erpeemweeemrv",
+    name: "Laitue",
+    variety: "Batavia",
+    quantity: 2,
+    quantity_unit: "lignes",
+    sowing_date: null,
+    planting_date: new Date("2024-07-01"),
+    ready_to_harvest: true,
+    quantity_harvested: 10,
+    harvest_unit: "unité",
+    remove_date: new Date("2024-05-20"),
+  },
+];
+
+export default FakeVegetableData;
