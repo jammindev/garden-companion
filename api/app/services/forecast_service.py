@@ -10,6 +10,8 @@ about cities based on postal codes from GeoNames API and weather forecasts
 from fastapi import HTTPException
 import httpx
 
+from app.core.config import settings
+
 
 class ForecastService:
     """
@@ -33,7 +35,7 @@ class ForecastService:
         A dictionary containing information about cities based on the provided
             postal code.
         """
-        geo_names_api_key = 'garden_companion'
+        geo_names_api_key = settings.GEONAMES_USERNAME
         api_url = (
             "http://api.geonames.org/postalCodeSearchJSON?"
             f"postalcode={postal_code}&username={geo_names_api_key}"
@@ -71,7 +73,7 @@ class ForecastService:
         Returns:
         Weather forecast information for the specified latitude and longitude.
         """
-        openweathermap_api_key = 'OPENWEATHER_API_KEY_REMOVED'
+        openweathermap_api_key = settings.OPENWEATHER_API_KEY
         api_url = (
             "https://api.openweathermap.org/data/3.0/onecall?"
             f"lat={latitude}&lon={longitude}&exclude=hourly,"

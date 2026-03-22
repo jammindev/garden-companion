@@ -68,6 +68,8 @@ class Settings(BaseSettings):
     MAIL_SERVER: str = config("MAIL_SERVER", cast=str)
     FRONT_END_URL: str = config("FRONT_END_URL", cast=str)
     BACK_END_URL: str = config("BACK_END_URL", cast=str)
+    OPENWEATHER_API_KEY: str = config("OPENWEATHER_API_KEY", cast=str)
+    GEONAMES_USERNAME: str = config("GEONAMES_USERNAME", cast=str)
     DEBUG: bool = config("DEBUG", default=False, cast=bool)
 
     class Config:
