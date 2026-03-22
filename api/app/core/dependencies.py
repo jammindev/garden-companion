@@ -6,7 +6,7 @@ from datetime import datetime
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError
-from jose import jwt
+import jwt
 
 from app.core.config import settings
 from app.models.user_model import User
@@ -45,7 +45,7 @@ async def get_current_user(token: str = Depends(reuseable_oauth)) -> User:
                 detail="Token expired",
                 headers={"WWW-Authenticate": "Bearer"}
             )
-    except (jwt.JWTError, ValidationError):
+    except (jwt.PyJWTError, ValidationError):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Could not validate credentials",

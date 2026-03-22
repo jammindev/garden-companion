@@ -4,7 +4,7 @@ Authentication API routes and functions.
 
 from fastapi import APIRouter, Body, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from jose import jwt
+import jwt
 from pydantic import ValidationError
 from typing import Any
 
@@ -90,7 +90,7 @@ async def refresh_token(refresh_token: str = Body(...)):
             algorithms=[settings.ALGORITHM]
         )
         token_data = TokenPayload(**payload)
-    except (jwt.JWTError, ValidationError):
+    except (jwt.PyJWTError, ValidationError):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Invalid token",

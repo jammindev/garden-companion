@@ -3,7 +3,7 @@ Utility functions for password hashing, token creation, and verification.
 """
 
 from datetime import datetime, timedelta
-from jose import jwt
+import jwt
 from passlib.context import CryptContext
 from typing import Union, Any
 
@@ -33,7 +33,7 @@ def create_access_token(
     encoded_jwt = jwt.encode(
         to_encode,
         settings.JWT_SECRET_KEY,
-        settings.ALGORITHM
+        algorithm=settings.ALGORITHM
     )
     return encoded_jwt
 
@@ -59,7 +59,7 @@ def create_refresh_token(
     encoded_jwt = jwt.encode(
         to_encode,
         settings.JWT_REFRESH_SECRET_KEY,
-        settings.ALGORITHM
+        algorithm=settings.ALGORITHM
     )
     return encoded_jwt
 
